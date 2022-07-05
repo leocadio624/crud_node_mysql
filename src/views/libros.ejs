@@ -1,0 +1,76 @@
+<%- include('partials/_header.ejs') %>
+
+<div class = "container">
+    <div class = "row mt-5">
+        <div class = "col-md-7">
+            
+            <table class = "table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ISBN</th>
+                        <th>Titutlo</th>
+                        <th>Editorial</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        
+                        <% data.forEach(function(i){ %>
+                            <tr>
+                                <td><%= i.id %></td>
+                                <td><%= i.isbn %></td>
+                                <td><%= i.titulo %></td>
+                                <td><%= i.nombreEditorial %></td>
+                                <td>
+                                    <a href = "/update/<%= i.id %>" class = "btn btn-info">Editar</a>
+                                    <a href = "/delete/<%= i.id %>" class = "btn btn-danger">Borrar</a>
+                                </td>
+                            </tr>
+
+                        <% }); %>
+
+
+                    <% } %>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <div class = "col-md-5">            
+            <div class = "card">
+                <div class = "card-body">
+                    
+                    <form action = "/add" method = "post" >
+                        <div class = "form-group" >
+                            <input type = "text" name = "isbn" value = "970-710061-3" placeholder = "ISBN" class = "form-control" />
+                        </div>
+                        <br/>
+                        <div class = "form-group" >
+                            <input type = "text" name = "titulo" value = "Mexico en la Frontera del Caos" placeholder = "Titulo" class = "form-control" />
+                        </div>
+                        <br/>
+                        <div class = "form-group" >
+                            <input type = "text" name = "nombreEditorial" value= "Ariel" placeholder = "Editorial" class = "form-control" />
+                        </div>
+                        <br/>
+                        <button type = "submit" class = "btn btn-primary">
+                            Guardar
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<%- include('partials/_footer.ejs') %>
+
+
+    
+
+
